@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Tooltip?>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="webtestimator.view.MainLayoutController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                        <MenuItem fx:id="btnSettings" mnemonicParsing="false" onAction="#openSettings" text="Settings" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox prefHeight="58.0" prefWidth="584.0">
+               <children>
+                  <TextField fx:id="urlField" prefHeight="26.0" prefWidth="229.0" promptText="URL">
+                      <tooltip>
+                          <Tooltip text="Enter a URL to start crawling from."/>
+                      </tooltip>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <ComboBox fx:id="comboType" prefWidth="150.0">
+                      <tooltip>
+                          <Tooltip text="Choose which kind of test to estimate for."/>
+                      </tooltip>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Depth:">
+                           <HBox.margin>
+                              <Insets right="5.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="depthField" prefHeight="26.0" prefWidth="54.0" promptText="Depth">
+                            <tooltip>
+                                <Tooltip text="Choose how 'deep' you want to crawl, default is 5."/>
+                            </tooltip>
+                           <HBox.margin>
+                              <Insets right="5.0" top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="btnEstimate" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#estimateClicked" text="Estimate">
+                            <tooltip>
+                                <Tooltip text="Start the crawler to estimate. Might take a while."/>
+                            </tooltip>
+                           <HBox.margin>
+                              <Insets right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <SplitPane dividerPositions="0.23745819397993312" prefHeight="300.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="257.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <VBox layoutX="37.0" layoutY="29.0" prefHeight="298.0" prefWidth="174.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <CheckBox fx:id="checkboxCMS" mnemonicParsing="false" text="CMS" />
+                              <CheckBox fx:id="checkboxWebServer" mnemonicParsing="false" text="Web Server" />
+                              <CheckBox fx:id="checkboxSize" mnemonicParsing="false" text="Size" />
+                              <CheckBox fx:id="checkboxComplexity" mnemonicParsing="false" text="Complexity" />
+                              <CheckBox fx:id="checkboxFunctionality" mnemonicParsing="false" text="Functionality" />
+                              <CheckBox fx:id="checkboxQuickFindings" mnemonicParsing="false" text="Quick Findings">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="416.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <TextArea fx:id="txtFieldResult" layoutX="67.0" layoutY="62.0" prefHeight="298.0" prefWidth="416.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <HBox alignment="BOTTOM_LEFT" maxHeight="59.0" prefHeight="59.0" prefWidth="600.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="lblCurrentPage">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
